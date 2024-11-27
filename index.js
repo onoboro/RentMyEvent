@@ -6,6 +6,10 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 connectDB();
+const path = require('path');
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 require('dotenv').config();
 
