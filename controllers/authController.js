@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
         if (!user) return res.status(400).send("Invalid credentials");
 
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).send("Invalid credentials");
+        if (!isMatch) return res.status(400).send("invalid credentials n");
 
         // Determine the type of account and set it in the session
         req.session.user = {
@@ -40,7 +40,8 @@ exports.login = async (req, res) => {
 
         res.redirect('/dashboard');
     } catch (err) {
-        res.status(500).send("Error during login");
+        res.status(500).send("an error occured");
+        console.log(err)
     }
 };
 exports.isAuthenticated = (req, res, next) => {

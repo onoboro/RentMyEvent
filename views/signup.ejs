@@ -1,17 +1,17 @@
 <form action="/signup" method="POST">
-    <select name="accountType">
+    <select name="accountType" id="accountType">
         <option value="user">User</option>
         <option value="supplier">Supplier</option>
     </select>
     <div id="userFields">
         <input type="email" name="email" placeholder="Email" />
         <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
+        <input type="password" name="password" id="userPassword" placeholder="Password" />
     </div>
     <div id="supplierFields" style="display: none;">
         <input type="text" name="companyName" placeholder="Company Name" />
         <input type="email" name="companyEmail" placeholder="Company Email" />
-        <input type="password" name="Password" placeholder="Password" />
+        <input type="password" name="password" id="supplierPassword" placeholder="Password" />
     </div>
     <button type="submit">Signup</button>
 </form>
@@ -19,7 +19,7 @@
     const select = document.querySelector('select[name="accountType"]');
     const userFields = document.getElementById('userFields');
     const supplierFields = document.getElementById('supplierFields');
-
+    const accountType = document.getElementById('accountType');
     select.addEventListener('change', () => {
         if (select.value === 'user') {
             userFields.style.display = 'block';
@@ -29,4 +29,11 @@
             supplierFields.style.display = 'block';
         }
     });
+    function clearHiddenFields() {
+        if (accountType.value === 'user') {
+            supplierPassword.value = ''; // Clear supplier password
+        } else {
+            userPassword.value = ''; // Clear user password
+        }
+    }
 </script>
