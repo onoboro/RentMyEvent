@@ -19,6 +19,9 @@ app.set('view engine', 'ejs');
 console.log('Mongo URI:', process.env.MONGO_URI);
 
 app.use(authRoutes);
+app.get('/', (req, res) => {
+    res.render('welcome'); // Render the welcome.ejs file
+});
 
 app.listen(3000, (err) => {
     if (err) {
