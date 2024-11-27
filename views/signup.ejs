@@ -1,0 +1,32 @@
+<form action="/signup" method="POST">
+    <select name="accountType">
+        <option value="user">User</option>
+        <option value="supplier">Supplier</option>
+    </select>
+    <div id="userFields">
+        <input type="email" name="email" placeholder="Email" />
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+    </div>
+    <div id="supplierFields" style="display: none;">
+        <input type="text" name="companyName" placeholder="Company Name" />
+        <input type="email" name="companyEmail" placeholder="Company Email" />
+        <input type="password" name="Password" placeholder="Password" />
+    </div>
+    <button type="submit">Signup</button>
+</form>
+<script>
+    const select = document.querySelector('select[name="accountType"]');
+    const userFields = document.getElementById('userFields');
+    const supplierFields = document.getElementById('supplierFields');
+
+    select.addEventListener('change', () => {
+        if (select.value === 'user') {
+            userFields.style.display = 'block';
+            supplierFields.style.display = 'none';
+        } else {
+            userFields.style.display = 'none';
+            supplierFields.style.display = 'block';
+        }
+    });
+</script>
