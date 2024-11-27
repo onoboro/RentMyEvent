@@ -6,13 +6,14 @@
     <div id="userFields">
         <input type="email" name="email" placeholder="Email" />
         <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" id="userPassword" placeholder="Password" />
+
     </div>
     <div id="supplierFields" style="display: none;">
         <input type="text" name="companyName" placeholder="Company Name" />
         <input type="email" name="companyEmail" placeholder="Company Email" />
-        <input type="password" name="password" id="supplierPassword" placeholder="Password" />
-    </div>
+
+    </div>        
+    <input type="password" name="password"  placeholder="Password" />
     <button type="submit">Signup</button>
 </form>
 <script>
@@ -20,6 +21,9 @@
     const userFields = document.getElementById('userFields');
     const supplierFields = document.getElementById('supplierFields');
     const accountType = document.getElementById('accountType');
+    const userPassword = document.getElementById('userPassword');
+    const supplierPassword = document.getElementById('supplierPassword');
+
     select.addEventListener('change', () => {
         if (select.value === 'user') {
             userFields.style.display = 'block';
