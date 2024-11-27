@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
         const user = await User.findOne({ email }) || await Supplier.findOne({ companyEmail: email });
         if (!user) return res.status(400).send("Invalid credentials");
 
-        const isMatch = await bcrypt.compare(password,  user.password );
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).send("Invalid credentials");
 
         // Determine the type of account and set it in the session
@@ -41,7 +41,6 @@ exports.login = async (req, res) => {
         res.redirect('/dashboard');
     } catch (err) {
         res.status(500).send("Error during login");
-        console.log(err)
     }
 };
 exports.isAuthenticated = (req, res, next) => {
